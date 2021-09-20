@@ -1391,8 +1391,8 @@ static uint16_t sii_cat_write_strings(struct _sii_cat *cat, unsigned char *buf)
 		char *str = s->data;
 		*b = s->length;
 		b++;
-		memmove(b, str, strlen(str));
-		b+= strlen(str);
+		memmove(b, str, s->length);
+		b+= s->length;
 	}
 	*strc = strings->count;
 
