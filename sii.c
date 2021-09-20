@@ -2192,9 +2192,13 @@ int sii_strings_add(SiiInfo *sii, const char *entry)
 
 int strings_add(struct _sii_strings *strings, const char *entry)
 {
-	strings_entry_add(strings, string_new(entry, strlen(entry)));
-
-	return strings->count;
+	int idx = string_search_string(strings, entry);
+	if (idx == -1)
+	{
+		strings_entry_add(strings, string_new(entry, strlen(entry)));
+		idx = strings->count;
+	}
+	return idx;
 }
 
 const char *string_search_id(struct _sii_strings *strings, int id)
