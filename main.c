@@ -217,8 +217,8 @@ static int parse_xml_input(const unsigned char *buffer, size_t length, const cha
 			esi_release(esi);
 			return -1;
 		}
-
-		printf("= %s generated\n", output);
+		if(output != NULL)
+			printf("= %s generated" NEWLINE, output);
 	}
 
 	esi_release(esi);
